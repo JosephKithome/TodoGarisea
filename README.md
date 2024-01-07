@@ -8,5 +8,5 @@
  - Next-auth
 
 
- ![Screenshot](login.png)
-  ![Screenshot](homepage.png)
+ ![Screenshot](login.PNG)
+![Screenshot](homepage.PNG)
