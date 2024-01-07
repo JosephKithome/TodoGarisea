@@ -6,16 +6,16 @@ import { useSession } from 'next-auth/react';
 
 
 // Self component
-const TodoCardList = ({data,handleTodoClick})=>{
+const TodoCardList = ({ data, handleTodoClick }) => {
 
-  return(
+  return (
     <div className="mt-16 prompt_layout">
       {
-        data.map((todo)=> (
+        data.map((todo) => (
           <TodoCard
-          key={todo._id}
-          todo={todo}
-          handleTodoClick={handleTodoClick}
+            key={todo._id}
+            todo={todo}
+            handleTodoClick={handleTodoClick}
           />
         ))
       }
@@ -24,10 +24,10 @@ const TodoCardList = ({data,handleTodoClick})=>{
 }
 const TodoList = () => {
 
-  const {searchText, setSearchText} = useState("")
+  const { searchText, setSearchText } = useState("")
   const [todos, setTodos] = useState([])
 
-  const {data: session } = useSession();
+  const { data: session } = useSession();
 
   // call the api here
   useEffect(() => {
@@ -37,43 +37,43 @@ const TodoList = () => {
 
       const response = await fetch('/api/todos');
 
-      const  data = await response.json();
+      const data = await response.json();
 
       setTodos(data);
     }
     //call the fucntion here
     fetchTodos();
-  },[]);
+  }, []);
 
   const handleSearchChange = (e) => {
 
   }
-  
+
 
   return (
-    
-    <section className='feed'>
-       {
-        session?.user?.email && 
-      <form className='relative w-full flex-center'>
-        <input
-        type='text'
-        placeholder='Search for Todos...'
-        value={searchText}
-        onChange={handleSearchChange}
-        required
-        className='search_input peer'
-        ></input>
 
-      </form>
-}
+    <section className='feed'>
       {
-        session?.user?.email && 
-      <TodoCardList
-      data={todos}
-      handleTodoClick= {()=>{}}
-      />
-}
+        session?.user?.email &&
+        <form className='relative w-full flex-center'>
+          <input
+            type='text'
+            placeholder='Search for Todos...'
+            value={searchText}
+            onChange={handleSearchChange}
+            required
+            className='search_input peer'
+          ></input>
+
+        </form>
+      }
+      {
+        session?.user?.email &&
+        <TodoCardList
+          data={todos}
+          handleTodoClick={() => { }}
+        />
+      }
     </section>
   )
 }
