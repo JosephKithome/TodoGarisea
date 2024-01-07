@@ -26,7 +26,7 @@ I successfully implemented the following features in the Garisea app:
 
 To meet the technical requirements:
 
-- I used a JSON file for data storage, calling data through a GraphQL API.
+- I used a MongoDB for data storage, calling data through a GraphQL API.
 - Implemented user management and authentication, allowing only logged-in users to manage the todo list.
 - Leveraged Redux and component states to manage CRUD tasks.
 - Named the application "Garisea."
