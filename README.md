@@ -53,7 +53,7 @@ To check out my solution:
    npm run dev
    ```
 
-# Sample Screenshoots
+# Sample Screenshots
 
 ![Screenshot](login.PNG)
 ![Screenshot](homepage.PNG)
