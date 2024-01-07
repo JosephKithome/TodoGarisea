@@ -71,6 +71,5 @@ This project is licensed under the [MIT License](LICENSE.md).
 For any further inquiries, feel free to reach out to me, josephkithome.jmk@gmail.com
 
 Thanks for considering my submission to the Garisea challenge! 🚀
-- This is a todo application that focuses on using nextJs Frontend development.
 
 
