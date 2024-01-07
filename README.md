@@ -53,6 +53,11 @@ To check out my solution:
    npm run dev
    ```
 
+# Sample Screenshoots
+
+![Screenshot](login.PNG)
+![Screenshot](homepage.PNG)
+
 ## Feedback and Contributions
 
 I'm open to feedback and contributions! If you have any suggestions or encounter issues, please let me know by opening an issue on the [GitHub Issues](https://github.com/your-username/garisea/issues) page.
