@@ -2,6 +2,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import TodoCard from '../components/TodoCard';
+import { useSession } from 'next-auth/react';
 
 
 // Self component
@@ -26,6 +27,8 @@ const TodoList = () => {
   const {searchText, setSearchText} = useState("")
   const [todos, setTodos] = useState([])
 
+  const {data: session } = useSession();
+
   // call the api here
   useEffect(() => {
 
@@ -48,7 +51,10 @@ const TodoList = () => {
   
 
   return (
+    
     <section className='feed'>
+       {
+        session?.user?.email && 
       <form className='relative w-full flex-center'>
         <input
         type='text'
@@ -60,10 +66,14 @@ const TodoList = () => {
         ></input>
 
       </form>
+}
+      {
+        session?.user?.email && 
       <TodoCardList
       data={todos}
       handleTodoClick= {()=>{}}
       />
+}
     </section>
   )
 }
