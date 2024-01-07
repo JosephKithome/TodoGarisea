@@ -8,4 +8,5 @@
  - Next-auth
 
 
- ![Screenshot](uml.png)
+ ![Screenshot](login.png)
+  ![Screenshot](homepage.png)
