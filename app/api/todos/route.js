@@ -1,7 +1,7 @@
 import connectToDb from "../../../utils/database";
 import Todo from "../../../models/Todo";
 
-export const GET = async (req: Request, res: Response) => {
+export const GET = async (req, res) => {
 
    try {
       await connectToDb();
