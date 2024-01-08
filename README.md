@@ -10,12 +10,12 @@ I successfully implemented the following features in the Garisea app:
 - Added new todos to the list
 - Marked todos as complete
 - Deleted todos from the list
-- Implemented filtering by all/active/complete todos
+- Implemented filtering by all/active/complete todos(ongoing... )
 - Added functionality to clear all completed todos
 - Ensured a responsive design for optimal user experience on various devices
 - Bonus: Implemented drag and drop to reorder items on the list
 
- #Tools used
+ # Tools used
  - NextJs 13
  - Mongodb
  - Tailwind

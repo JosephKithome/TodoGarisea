@@ -3,19 +3,19 @@ import { useState, useEffect } from 'react'
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import React from 'react'
-import Profileee from '../profile/profile';
+import Profile from './ui/profile';
 
 const MyProfile = () => {
 
     const { data: session } = useSession();
-
     const [todos, setTodos] = useState([]);
+
     useEffect(() => {
 
 
         const fetchTodos = async () => {
 
-            const response = await fetch(`/api/users/${session.user?.email}/todos`);
+            const response = await fetch(`/api/users/${session?.user?.email}/todos`);
 
             const data = await response.json();
 
@@ -36,7 +36,7 @@ const MyProfile = () => {
     }
     return (
         <div>
-            <Profileee
+            <Profile
                 name="My"
                 desc="Welcome to your personalized profile page"
                 data={todos}

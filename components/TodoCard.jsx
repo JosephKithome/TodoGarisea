@@ -21,7 +21,7 @@ const TodoCard = ({ todo, handleTodoClick, handleEdit, handleDelete }) => {
         navigator.clipboard.writeText(todo.name);
 
         // reset the copy
-        setTimeout(()=>setCopied("",3000));
+        setTimeout(() => setCopied("", 3000));
     }
     return (
         <div className='prompt_card'>
@@ -41,7 +41,7 @@ const TodoCard = ({ todo, handleTodoClick, handleEdit, handleDelete }) => {
                 <div className="copy_btn"
                     onClick={handleCopy}>
                     <Image
-                        src={copied ===todo.name ? TickIcon :CopyIcon }
+                        src={copied === todo.name ? TickIcon : CopyIcon}
                         width={12}
                         height={12}
                     />
@@ -50,6 +50,9 @@ const TodoCard = ({ todo, handleTodoClick, handleEdit, handleDelete }) => {
             <p className='my-4 font-santoshi text-sm text-gray-700'>{todo.name}</p>
             <p className='font-inter text-sm blue_gradient cursor-pointer'
                 onClick={() => handleTodoClick && handleTodoClick(todo._id)}>{todo.description}</p>
+            <p className='font-inter text-sm blue_gradient cursor-pointer'
+                onClick={() => handleTodoClick && handleTodoClick(todo._id)}><span
+                className='my-4 font-santoshi text-sm text-gray-700'>Date Created:</span>  {todo.creationDate}</p>
         </div>
     )
 }
