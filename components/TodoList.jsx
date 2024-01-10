@@ -24,7 +24,7 @@ const TodoCardList = ({ data, handleTodoClick }) => {
 }
 const TodoList = () => {
 
-  const { searchText, setSearchText } = useState("")
+  const [searchText, setSearchText] = useState("");
   const [todos, setTodos] = useState([])
 
   const { data: session } = useSession();
@@ -46,7 +46,16 @@ const TodoList = () => {
   }, []);
 
   const handleSearchChange = (e) => {
+    const query = e.target.value;
+    setSearchText(query);
 
+    // Filter the data based on the search query
+    const filteredResults = todos.filter(item =>
+      item.name.toLowerCase().includes(query.toLowerCase())
+    );
+
+    // Update the state with the filter
+    setTodos(filteredResults);
   }
 
 

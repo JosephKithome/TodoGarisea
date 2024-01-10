@@ -21,11 +21,11 @@ const MyProfile = () => {
                 console.log('Fetching');
                 const response = await fetch(`/api/users/${session?.user?.email}/todos`);
 
-                console.log("The resource", session.user.email    )
+                console.log("The resource", session.user.email)
                 const data = await response.json();
                 console.log(data);
                 setTodos(data);
-            }catch(e) {
+            } catch (e) {
                 console.log(e);
             }
         }
@@ -42,7 +42,23 @@ const MyProfile = () => {
     }
 
     const handleDelete = async (todo) => {
-        router.push(`/delete-todo?=${todo._id}`);
+        const hasConfirmed = confirm('Are you sure you want to delete this todo?');
+        if (hasConfirmed) {
+            try {
+                await fetch(`/api/todos/${todo._id.toString()}`,{
+                    method: 'DELETE'
+                });
+                
+                const filteredTodos = todos.filter((p)=>p._id !==todo._id);
+                setTodos(filteredTodos);
+            } catch (err) {
+
+                console.log(err);
+            }
+
+        }
+
+        // router.push(`/delete-todo?=${todo._id}`);
     }
     return (
         <div>

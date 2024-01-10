@@ -1,17 +1,16 @@
-import connectToDb from "../../../utils/database";
-import Todo from "../../../models/Todo";
+import connectToDb from "../../../../utils/database";
+import Todo from "../../../../models/Todo";
 
 export const GET = async (req, { params }, res) => {
     try {
-        console.log(req.params.id)
+        console.log(params.id)
         await connectToDb();
-        
-        console.log("The param id", params.id);
+
 
         // Retrieve a particular todo
         const todo = await Todo.findById(params.id);
 
-        console.log("Retrieved todo:", todo);
+         console.log("Retrieved todo:", todo);
 
         if (!todo) {
             return new Response("Todo not found", { status: 404 });
@@ -24,6 +23,7 @@ export const GET = async (req, { params }, res) => {
     }
 }
 
+
 export const PATCH = async (req, { params }, res) => {
     // Destructure the request
     const { name, description, status } = await req.json()
@@ -33,7 +33,7 @@ export const PATCH = async (req, { params }, res) => {
 
         //Retrieve the existing todo
 
-        const existingTodo = await Todo.findById(req.params.id);
+        const existingTodo = await Todo.findById(params.id);
 
         // check if prompt exists
         if (!existingTodo) {
@@ -55,10 +55,12 @@ export const PATCH = async (req, { params }, res) => {
 export const DELETE = async (req, { params }, res) => {
 
     try {
+
+        console.log("The id is " + params.id);
         await connectToDb();
 
         //Retrieve the existing todo
-        await Todo.findByIdAndRemove(req.params.id);
+        await Todo.findByIdAndDelete(params.id);
 
 
         return new Response(`Prompt deleted successfully`, { status: 200 });

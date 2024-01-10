@@ -28,13 +28,13 @@ const TodoCard = ({ todo, handleTodoClick, handleEdit, handleDelete }) => {
     }
     return (
         <div className="">
-            <div class="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-lg flex items-center space-x-4">
+            {/* <div className="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-lg flex items-center space-x-4">
 
                 <div>
                     <div class="text-xl font-medium text-black">{todo.name}</div>
                     <p class="text-slate-500"></p>
                 </div>
-            </div>
+            </div> */}
 
             <div className='prompt_card'>
 
@@ -60,13 +60,14 @@ const TodoCard = ({ todo, handleTodoClick, handleEdit, handleDelete }) => {
                     </div>
                 </div>
                 <p className='my-4 font-santoshi text-sm text-gray-700 flex gap-2'>
-                {todo.status !== true ? "Active" : "Completed"}
-                <Image
-                            src={todo.status !== true ? TickIcon : CopyIcon}
-                            width={12}
-                            height={12}
-                            alt='error'
-                        /></p>
+                    {todo.status !== true ? "Active" : "Completed"}
+                    <Image
+                        src={todo.status !== true ? TickIcon : CopyIcon}
+                        width={12}
+                        height={12}
+                        alt='error'
+                    /></p>
+                <div class="text-xl font-medium text-black">{todo.name}</div>
                 <p className='font-inter text-sm blue_gradient cursor-pointer'
                     onClick={() => handleTodoClick && handleTodoClick(todo._id)}>{todo.description}</p>
                 <p className='font-inter text-sm blue_gradient cursor-pointer'

@@ -16,14 +16,16 @@ const EditTodo = () => {
 
     useEffect(() => {
         const getTododDetails = async () => {
-            const response = await fetch(`/api/todos?id=${todoId}`);
+            const response = await fetch(`/api/todos/${todoId}`);
             const data = await response.json();
 
             // Search through```
            //const newData= JSON.stringify(data.filter(todo => todo._id===todoId))
-           alert(JSON.stringify(JSON.stringify(data)));
           
-            console.log("The data.name is: " + data.name);
+            //console.log("The data.name is: " + JSON.parse(newData));
+
+            //const d = JSON.parse(newData);
+            console.log("The name is: " + data.name);
             setTodo({
                 // id: data._id,
                 name: data.name,
@@ -34,38 +36,39 @@ const EditTodo = () => {
 
     }, [todoId])
 
-    //const router = useRouter(); // for routing purposes
+    const router = useRouter(); // for routing purposes
     //const { data: session } = useSession(); // for retrieving session data
 
-    // const createTodo = async (e) => {
+    const editTodo = async (e) => {
 
-    //     e.preventDefault();
-    //     setSubmitting(true);
-    //     try {
-    //         const response = await fetch('/api/todos/new', {
-    //             method: 'POST',
-    //             body: JSON.stringify({
-    //                 name: todo.name,
-    //                 description: todo.description,
-    //                 userId: session?.user.email,
-    //                 status: false,
-    //                 createdAt: new Date()
+        e.preventDefault();
+        setSubmitting(true);
 
-    //             })
-    //         })
+        if(!todoId) return alert("Todo id not found");
+        try {
+            const response = await fetch(`/api/todos/${todoId}`, {
+                method: 'PATCH',
+                body: JSON.stringify({
+                    name: todo.name,
+                    description: todo.description,
+                    status: true,
+                    createdAt: new Date()
 
-    //         if (response.ok) {
-    //             router.push('/')
-    //         }
+                })
+            })
 
-    //     } catch (e) {
-    //         console.log(e)
-    //     }
-    //     finally {
-    //         setSubmitting(false)
-    //     }
+            if (response.ok) {
+                router.push('/')
+            }
 
-    // }
+        } catch (e) {
+            console.log(e)
+        }
+        finally {
+            setSubmitting(false)
+        }
+
+    }
 
     return (
         <div>
@@ -74,7 +77,7 @@ const EditTodo = () => {
                 todo={todo}
                 setTodo={setTodo}
                 submitting={submitting}
-                handleSubmit={() => { }}
+                handleSubmit={editTodo}
             />
         </div>
     )
