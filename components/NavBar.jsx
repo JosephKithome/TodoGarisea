@@ -9,7 +9,7 @@ const NavBar = () => {
   const { data: session } = useSession();
   const [providers, setProviders] = useState(null);
   const [toggleDropDown, setToggleDropDown] = useState(false);
-  const isAuthenticated =true;
+  const isAuthenticated = true;
 
   // Fetch authentication providers on component mount
   useEffect(() => {
@@ -49,7 +49,7 @@ const NavBar = () => {
       {/* Mobile navigation */}
       <div className="sm:hidden flex relative">
         {session?.user ? (
-        // {isAuthenticated ? (
+          // {isAuthenticated ? (
           // Authenticated user
           <div className="flex">
             <div onClick={handleDropDownToggle} className="cursor-pointer">
@@ -103,13 +103,12 @@ const NavBar = () => {
 
       {/* Desktop navigation */}
       <div className="sm:flex hidden">
-
         {/* {isAuthenticated ? ( */}
-         {session?.user ? (
+        {session?.user ? (
           // Authenticated user navigation links
           <div className="flex gap-3 md:gap-5">
             <button type="button" className="outline_btn" onClick={signOut}>
-            Signed in as {session.user.email}
+              Signed in as {session.user.email}
             </button>
             <Link href="/create-todo" className="black_btn">
               Add Todo
@@ -119,7 +118,7 @@ const NavBar = () => {
             </button>
             <Link href="/profile" className="flex gap-2 flex-center">
               <Image
-                src={NextIcon}
+                src={session?.user?.image}
                 alt="profile"
                 width={50}
                 height={50}
