@@ -1,4 +1,5 @@
 'use client'
+
 import { useState, useEffect } from 'react'
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
@@ -9,30 +10,39 @@ const MyProfile = () => {
 
     const { data: session } = useSession();
     const [todos, setTodos] = useState([]);
+    const router = useRouter();
 
     useEffect(() => {
 
 
         const fetchTodos = async () => {
 
-            const response = await fetch(`/api/users/${session?.user?.email}/todos`);
+            try {
+                console.log('Fetching');
+                const response = await fetch(`/api/users/${session?.user?.email}/todos`);
 
-            const data = await response.json();
-
-            setTodos(data);
+                console.log("The resource", session.user.email    )
+                const data = await response.json();
+                console.log(data);
+                setTodos(data);
+            }catch(e) {
+                console.log(e);
+            }
         }
         //call the fucntion here
-        // if (session.user?.email) 
-        fetchTodos();
+        if (session?.user?.email)
+            fetchTodos();
     }, []);
 
 
-    const handleEdit = async () => {
+    const handleEdit = async (todo) => {
+
+        router.push(`/update-todo?id=${todo._id}`);
 
     }
 
-    const handleDelete = async () => {
-
+    const handleDelete = async (todo) => {
+        router.push(`/delete-todo?=${todo._id}`);
     }
     return (
         <div>

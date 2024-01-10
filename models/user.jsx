@@ -1,9 +1,9 @@
 import { Schema, model, models } from 'mongoose';
 
 const UserSchema = new Schema({
-    id: {
-        type: 'string'
-    },
+    // id: {
+    //     type: 'string'
+    // },
     email: {
         type: String,
         unique: [true, 'Email already exists!'],

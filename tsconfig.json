@@ -36,7 +36,7 @@
     "app/api/auth/[...nextauth]/route.tsx",
     "app/api/users/[email]/todos/route.jsx",
     "app/profile/ui/profile.jsx"
-, "models/Todo.jsx", "models/user.jsx", "app/page.jsx", "app/layout.jsx", "app/api/todos/route.js"  ],
+, "models/Todo.jsx", "models/user.jsx", "app/page.jsx", "app/layout.tsx", "app/api/todos/route.js"  ],
   "exclude": [
     "node_modules"
   ]
