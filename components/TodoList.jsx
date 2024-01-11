@@ -45,7 +45,7 @@ const TodoList = () => {
     fetchTodos();
   }, []);
 
-  const handleSearchChange = (e) => {
+  const handleSearchChange = (e) => {66
     const query = e.target.value;
     setSearchText(query);
 
